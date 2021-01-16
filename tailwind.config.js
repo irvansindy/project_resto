@@ -20,4 +20,15 @@ module.exports = {
     },
 
     plugins: [require('@tailwindcss/ui')],
+    
+    future: {
+        defaultLineHeights: true,
+        purgeLayersByDefault: true,
+        removeDeprecatedGapUtilities: true,
+      },
+      experimental: {
+          additionalBreakpoint: true,
+          extendedFontSizeScale: true,
+          extendedSpacingScale: true,
+      },
 };
