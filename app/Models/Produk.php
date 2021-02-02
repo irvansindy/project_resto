@@ -26,4 +26,5 @@ class Produk extends Model
     public function getPhotoAttribute($value){
         return url('storage/'.$value);
     }
+
 }

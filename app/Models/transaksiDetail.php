@@ -14,14 +14,14 @@ class transaksiDetail extends Model
     protected $table = 'transaksi_detail';
 
     protected $fillable = [
-        'id_transaksi', 'id_produk'
+        'id_produk', 'id_tempat', 'harga_produk', 'qty'
     ];
 
     protected $hidden = [];
 
     public function transaksiMaster()
     {
-        return $this->id(Transaksi::class, 'id_transaksi', 'id');
+        return $this->belongsTo(Transaksi::class, 'id_transaksi', 'id');
     }
 
     public function produk()

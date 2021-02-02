@@ -5,8 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use App\Models\Tempat;
-
+// use App\Models\Tempat;
+use App\Models\transaksiDetail;
 class Transaksi extends Model
 {
     use SoftDeletes;
@@ -15,8 +15,10 @@ class Transaksi extends Model
     protected $table = 'transaksi_master';
 
     protected $fillable = [
-        'uuid', 'id_kasir', 'id_tempat', 'no_telepon', 'total_transaksi', 'status'
+        'uuid', 'id_kasir', 'id_tempat', 'nama_pelanggan', 'total_transaksi', 'status'
     ];
+
+    protected $hidden = [];
 
     public function transaksi_detail()
     {
