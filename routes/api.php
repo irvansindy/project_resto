@@ -34,5 +34,9 @@ Route::post('checkout', [apiCheckoutController::class, 'checkout']);
 Route::get('transaksi/{id}', [apiTransaksiController::class, 'index']);
 
 // API Authentication
-Route::post('logout', [apiAuthController::class, 'logout']);
 Route::post('login', [apiAuthController::class, 'login']);
+Route::post('register', [apiAuthController::class, 'register']);
+
+Route::middleware('auth:sanctum')->group(function(){
+    Route::post('logout', [apiAuthController::class, 'logout']);
+});

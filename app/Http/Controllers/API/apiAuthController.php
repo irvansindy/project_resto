@@ -8,10 +8,14 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\API\ResponseFormatter;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use App\Actions\Fortify\PasswordValidationRules;
 use Exception;
+use Illuminate\Support\Facades\Validator;
 
 class apiAuthController extends Controller
 {
+    use PasswordValidationRules;
+
     public function login(Request $request)
     {
         try {
@@ -57,12 +61,57 @@ class apiAuthController extends Controller
 
     public function logout(Request $request)
     {
-        // $token = $request->user()->currentAccessToken()->delete();
-        $user = auth('sanctum')->user();
-        if ($user)
+        $token = $request->user()->currentAccessToken()->delete();
+        // $token = auth('sanctum')->user();
+        if ($token)
         {
-            $user->currentAccessToken()->delete();
-            return ResponseFormatter::success($user, 'Revoked');
+            return ResponseFormatter::success($token, 'Revoked');
+        }
+    }
+
+    public function register(Request $request)
+    {
+        try {
+
+            // $request->validate([
+            //     'name' => ['required','string','max:255'],
+            //     'email' => ['required','string','email','max:255','unique:users'],
+            //     'password' => $this->passwordRules()
+            // ]);
+                
+            $validator = Validator::make($request->all(), [
+                'name' => ['required','string','max:255'],
+                'email' => ['required','string','email','max:255','unique:users'],
+                'password' => $this->passwordRules()
+            ]);
+    
+            if ($validator) {
+                // return redirect('post/create')
+                //             ->withErrors($validator)
+                //             ->withInput();
+
+                User::create([
+                    'name' => $request->name,
+                    'email' => $request->email,
+                    'password' => Hash::make($request->password)
+                ]);
+    
+                $user = User::where('email', $request->email)->first();
+                
+                $tokenResult = $user->createToken('authToken')->plainTextToken;
+                
+                return ResponseFormatter::success([
+                    'access_token' => $tokenResult,
+                    'token_type' => 'Bearer',
+                    'user' => $user
+                ]);
+            }
+            
+        } catch (Exception $error) {
+            return ResponseFormatter::error([
+                'message' => 'Something went wrong on authentication',
+                'error' => $error
+            ], 'Authentication Failed', 500);
         }
     }
 }
