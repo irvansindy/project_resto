@@ -72,12 +72,6 @@ class apiAuthController extends Controller
     public function register(Request $request)
     {
         try {
-
-            // $request->validate([
-            //     'name' => ['required','string','max:255'],
-            //     'email' => ['required','string','email','max:255','unique:users'],
-            //     'password' => $this->passwordRules()
-            // ]);
                 
             $validator = Validator::make($request->all(), [
                 'name' => ['required','string','max:255'],
@@ -86,9 +80,6 @@ class apiAuthController extends Controller
             ]);
     
             if ($validator) {
-                // return redirect('post/create')
-                //             ->withErrors($validator)
-                //             ->withInput();
 
                 User::create([
                     'name' => $request->name,

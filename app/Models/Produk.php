@@ -19,6 +19,7 @@ class Produk extends Model
         'foto',
         'jenis',
         'harga',
+        'qty'
     ];
 
     protected $hidden = [];
