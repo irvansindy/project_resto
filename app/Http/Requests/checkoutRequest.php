@@ -24,14 +24,14 @@ class checkoutRequest extends FormRequest
     public function rules()
     {
         return [
-            'id_kasir' => 'required',
+            // 'id_kasir' => 'required',
             'id_tempat' => 'required',
             'nama_pelanggan' => 'required',
             'total_transaksi' => 'required',
-            'status' => 'nullable|string|in:PROCCESS,SUCCESS'
-            // 'transaksi_detail' => 'required|array',
-            // 'transaksi_detail.*' => 'integer|exists:produk,id',
-            // 'transaksi_detail.*' => 'integer|exists:carts,id',
+            'status' => 'nullable|string|in:PROCCESS,SUCCESS',
+            'transaksi_detail' => 'required|array',
+            'transaksi_detail.*' => 'integer|exists:produk,id',
+            'transaksi_detail.*' => 'integer|exists:carts,id',
         ];
     }
 }

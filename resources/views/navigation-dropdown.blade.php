@@ -25,7 +25,7 @@
                         {{ __('Kasir') }}
                     </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('transaksi.index') }}" :active="request()->routeIs('transaksi.index')">
-                        {{ __('Transaksi') }}
+                        {{ __('T ransaksi') }}
                     </x-jet-nav-link>
                 </div>
             </div>

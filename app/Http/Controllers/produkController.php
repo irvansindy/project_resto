@@ -29,7 +29,7 @@ class produkController extends Controller
      */
     public function create()
     {
-        return view ('produk.create');
+        return view ('produk.create2');
     }
 
     /**
