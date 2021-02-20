@@ -88,7 +88,8 @@
       
 
       <!--Container-->
-      <div class="container w-full md:w-4/5 xl:w-3/5  mx-auto px-2">
+			{{-- md:w-4/5 xl:w-3/5 --}}
+      <div class="container w-full mx-auto px-2">
       		 
 			<!--Title-->
 			<h1 class="flex items-center font-sans font-bold break-normal text-indigo-500 px-2 py-8 text-xl md:text-2xl">

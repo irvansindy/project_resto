@@ -23,9 +23,16 @@
                             <x-jet-input id="qr_code" class="block mt-1 w-full" type="text" name="qr_code" :value="old('qr_code')" required autofocus />
                         </div>
                         <div class="my-5">
-                            <x-jet-button class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" type="submit">
-                                {{ __('Simpan') }}
-                            </x-jet-button>
+                            <div class="grids-row-4">
+                                <x-jet-button class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                    <a href="{{route('tempat.index')}}">
+                                        {{ __('Batal') }}
+                                    </a>					
+                                </x-jet-button>
+                                <x-jet-button class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" type="submit">
+                                    {{ __('Simpan') }}
+                                </x-jet-button>
+                            </div>
                         </div>
                     </div>
                 </form>

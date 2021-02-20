@@ -16,7 +16,7 @@ class kasirKontroller extends Controller
     public function index()
     {
         $kasir = Kasir::all();
-        return view('kasir.index', ['kasir'=>$kasir]);
+        return view('kasir.index2', ['kasir'=>$kasir]);
     }
 
     /**

@@ -25,6 +25,9 @@ Route::get('/', function () {
 Route::get('/dropdown', function () {
     return view('dropdown');
 });
+Route::get('/table', function () {
+    return view('table');
+});
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');

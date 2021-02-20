@@ -19,7 +19,7 @@ class produkController extends Controller
     public function index()
     {
         $produk = Produk::all();
-        return view ('produk.index', ['produk' => $produk]);
+        return view ('produk.index2', ['produk' => $produk]);
     }
 
     /**
@@ -71,7 +71,7 @@ class produkController extends Controller
     {
         $item = produk::findOrFail($id);
         
-        return view ('produk.edit', ['item'=>$item]);
+        return view ('produk.edit2', ['item'=>$item]);
     }
 
     /**

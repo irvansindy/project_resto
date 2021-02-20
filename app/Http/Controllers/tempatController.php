@@ -17,7 +17,7 @@ class tempatController extends Controller
     public function index()
     {
         $tempat = Tempat::all();
-        return view ('tempat.index', ['tempat'=>$tempat]);
+        return view ('tempat.index2', ['tempat'=>$tempat]);
     }
 
     /**
