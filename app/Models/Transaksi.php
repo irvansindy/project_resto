@@ -23,6 +23,7 @@ class Transaksi extends Model
     public function transaksi_detail()
     {
         return $this->hasMany(transaksiDetail::class, 'id_transaksi');
+        // return $this->belongsTo(transaksiDetail::class, 'id_transaksi', 'id');
     }
 
     public function tempat()

@@ -48,7 +48,10 @@ class transaksiController extends Controller
      */
     public function show($id)
     {
-        //
+        // $item = Transaksi::with('transaksi_detail')->where('id', $id)->get();
+        $item = Transaksi::with('transaksi_detail')->findOrFail($id);
+        // dd($item);
+        return view('transaksi.show', ['item'=>$item]);
     }
 
     /**
@@ -83,5 +86,14 @@ class transaksiController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function changeStatus(Request $request, $id, $status)
+    {
+        $transaksi = Transaksi::findOrFail($id);
+        $transaksi->status = $status;
+        $transaksi->save();
+        
+        return redirect('transaksi.show', $id);
     }
 }

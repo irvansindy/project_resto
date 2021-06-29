@@ -88,10 +88,11 @@
 						<tr class="bg-transparent text-center">
 							<td>{{$item->uuid}}</td>
 							<td>{{$item->nama_pelanggan}}</td>
-							<td>{{$item->id_tempat}}</td>
+							<td>{{$item->tempat->nama_tempat}}</td>
 							<td>{{$item->total_transaksi}}</td>
 							<td>{{$item->status}}</td>
 							<td>
+								<a href="{{route('transaksi.show', $item->id)}}">Detail</a>
 								<a href="{{route('transaksi.edit', $item->id)}}">Edit</a>
 								<form action="{{route('transaksi.destroy', $item->id)}}" method="POST" class="inline-block">
 								@csrf

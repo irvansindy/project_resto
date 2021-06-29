@@ -78,7 +78,7 @@
 							</div>
 							<div class="my-5">
 								<x-jet-label for="qty" value="{{ __('Qty Produk') }}" />
-								<x-jet-input id="qty" class="block mt-1 w-full" type="text" name="qty" value="{{old('harga') ? old('harga') : $item->harga }}" required />
+								<x-jet-input id="qty" class="block mt-1 w-full" type="text" name="qty" value="{{old('qty') ? old('qty') : $item->harga }}" required />
 								@error('qty')
 									<p>{{$message}}</p>
 								@enderror

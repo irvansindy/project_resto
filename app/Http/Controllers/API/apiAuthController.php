@@ -84,7 +84,9 @@ class apiAuthController extends Controller
                 User::create([
                     'name' => $request->name,
                     'email' => $request->email,
-                    'password' => Hash::make($request->password)
+                    'password' => Hash::make($request->password),
+                    'phone_number' => $request->phone_number,
+                    'roles' => $request->roles,
                 ]);
     
                 $user = User::where('email', $request->email)->first();

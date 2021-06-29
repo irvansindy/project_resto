@@ -20,22 +20,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/dropdown', function () {
-    return view('dropdown');
-});
-Route::get('/table', function () {
-    return view('table');
+    return redirect()->route('dashboard');
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+// Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+//     return view('dashboard');
+// })->name('dashboard');
 
 Route::resource('produk', produkController::class)->middleware('auth:sanctum');
 Route::resource('tempat', tempatController::class)->middleware('auth:sanctum');
 Route::resource('kasir', kasirKontroller::class)->middleware('auth:sanctum');
 Route::resource('transaksi', transaksiController::class)->middleware('auth:sanctum');
+Route::get('transaksi/{id}/status/{status}', [transaksiController::class, 'changeStatus'])->name('transaksi.changeStatus')->middleware('auth:sanctum');
 Route::get('/users', [UserController::class, 'index'])->name('users.index');
 Route::get('/modal', [UserController::class, 'modal'])->name('users.modal');

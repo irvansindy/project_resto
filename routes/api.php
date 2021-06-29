@@ -33,7 +33,7 @@ Route::get('cart', [apiCartController::class, 'index']);
 Route::post('checkout', [apiCheckoutController::class, 'checkout']);
 Route::get('transaksi/{id}', [apiTransaksiController::class, 'index']);
 
-// API Authentication
+// API Authenticationphp
 Route::post('login', [apiAuthController::class, 'login']);
 Route::post('register', [apiAuthController::class, 'register']);
 

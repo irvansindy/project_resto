@@ -16,9 +16,8 @@ class CreateTransaksiMasterTable extends Migration
         Schema::create('transaksi_master', function (Blueprint $table) {
             $table->id();
             $table->string('uuid');
-            $table->integer('id_kasir');
             $table->integer('id_tempat');
-            $table->string('nama_pelanggan');
+            $table->integer('id_user');
             $table->decimal('total_transaksi');
             $table->string('status');
             $table->timestamps();
